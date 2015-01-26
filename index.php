@@ -14,14 +14,15 @@
 		<div class="form-group">
 				<b><label>Tipo de Cartas</label></b><br>
 					<select name="name" id="name" class="form-control">
-					<?php
-						$query="Select nombre FROM proyectos ORDER BY id";
-						$res=pg_query($query);
-						while($tabla=pg_fetch_assoc($res)){
-							$nombre=$tabla['nombre'];
-							echo "<option value=\"$nombre\" selected=\"select\">$nombre</option>";
-						}
-					?>
+						<option value="" selected="selected">Seleccione un tipo</option>
+						<?php
+							$query="Select nombre FROM proyectos ORDER BY id";
+							$res=pg_query($query);
+							while($tabla=pg_fetch_assoc($res)){
+								$nombre=$tabla['nombre'];
+								echo "<option value=\"$nombre\" selected=\"select\">$nombre</option>";
+							}
+						?>
 						<!--<option value="" selected="selected">Seleccione un tipo</option>
 			            <option value="Residencias">Carta de Residencias</option>
 			            <option value="Servicio">Carta de Servicios</option>

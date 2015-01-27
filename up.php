@@ -1,9 +1,12 @@
 <?php
+	session_start();
 	include "conect.php";
-	$name = $_POST['country'];
+	$name = $_SESSION['user'];
+	#$name = $_POST['country'];
 	
 	$message = "";
 	$valid_file = true;
+	$ext=$_FILES["file"]["type"];
 	//if the32	
 	// DID upload a file...
 	if($_FILES['photo']['name'])
@@ -59,5 +62,6 @@
 	echo "new dir: ".$dir."<br>";
 	echo " ".$addres."<br>";
 	echo "Folder Exist: ".$exist."<br>";
+	echo "Type: ".$ext."<br>";
 	echo " ".$message."<br>";
 ?>

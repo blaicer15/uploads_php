@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	include "conect.php";
 ?>
 <!DOCTYPE html>
@@ -10,7 +11,7 @@
 	<link rel="stylesheet" href="">
 </head>
 <body>
-	<form action="subir.php">
+	<form action="subir.php" method="post">
 		<div class="form-group">
 				<b><label>Tipo de Cartas</label></b><br>
 					<select name="name" id="name" class="form-control">
@@ -19,7 +20,9 @@
 							$query="Select nombre FROM proyectos ORDER BY id";
 							$res=pg_query($query);
 							while($tabla=pg_fetch_assoc($res)){
-								$nombre=$tabla['nombre'];
+								$nombre = $tabla['nombre'];
+								$_SESSION['user'] = $nombre; 
+								$user = $_SESSION['user'];
 								echo "<option value=\"$nombre\" selected=\"select\">$nombre</option>";
 							}
 						?>
